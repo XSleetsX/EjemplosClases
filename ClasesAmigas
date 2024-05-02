@@ -1,0 +1,46 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Autos{
+    private:
+        int cdi;
+    protected:
+        int gps;
+    public:
+        string modelo;
+        int serie;
+        friend class Accesocdi;
+        int getcdi();
+        int getgps();
+};
+
+int Autos::getcdi(){
+    return cdi;
+}
+
+int Autos::getgps(){
+    return gps;
+}
+
+class Accesocdi{
+    public:
+        int acceso;
+        void getPropiedades(Autos&);
+        void setPropiedades(Autos& obj);
+};
+
+void Accesocdi::setPropiedades(Autos& obj){
+    obj.cdi = 1;
+}
+
+void Accesocdi::getPropiedades(Autos& obj){
+    cout << obj.cdi;
+}
+
+int main(){
+    Autos c01;
+    Accesocdi acc01;
+    acc01.getPropiedades(c01);
+    return 0;
+}
